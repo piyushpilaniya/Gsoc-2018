@@ -1,0 +1,11 @@
+import "DifferentialRobot.idsl";
+import "Laser.idsl";
+import "JointMotor.idsl";
+Component Robot{
+    Communications{
+        implements DifferentialRobot, Laser,JointMotor;
+    };
+gui Qt(QWidget);
+language Python;
+};
+
