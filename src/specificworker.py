@@ -19,19 +19,21 @@
 
 import sys, os, Ice, traceback, time
 
+#sys.path.append('/usr/local/lib/python3.6/site-packages')
+
 from morse.builder import *
 
-from PySide import *
+from PySide import QtCore, QtGui
 from genericworker import *
 
 ROBOCOMP = ''
 try:
 	ROBOCOMP = os.environ['ROBOCOMP']
 except:
-	print '$ROBOCOMP environment variable not set, using the default value /opt/robocomp'
+	print ('$ROBOCOMP environment variable not set, using the default value /opt/robocomp')
 	ROBOCOMP = '/opt/robocomp'
 if len(ROBOCOMP)<1:
-	print 'genericworker.py: ROBOCOMP environment variable not set! Exiting.'
+	print ('genericworker.py: ROBOCOMP environment variable not set! Exiting.')
 	sys.exit()
 
 
@@ -70,7 +72,7 @@ class SpecificWorker(GenericWorker):
 
 	@QtCore.Slot()
 	def compute(self):
-		print 'SpecificWorker.compute...'
+		print ('SpecificWorker.compute...')
 		#try:
 		#	self.differentialrobot_proxy.setSpeedBase(100, 0)
 		#except Ice.Exception, e:

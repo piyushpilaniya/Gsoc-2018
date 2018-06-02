@@ -17,11 +17,13 @@
 #    along with RoboComp.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
-from PySide import *
+
+from PySide import QtCore, QtGui
+
 try:
 	from ui_mainUI import *
 except:
-	print "Can't import UI file. Did you run 'make'?"
+	print ("Can't import UI file. Did you run 'make'?")
 	sys.exit(-1)
 
 
@@ -54,7 +56,7 @@ class GenericWorker(QtGui.QWidget):
 	# @param per Period in ms
 	@QtCore.Slot(int)
 	def setPeriod(self, p):
-		print "Period changed", p
+		print ("Period changed", p)
 		Period = p
 		timer.start(Period)
 
@@ -64,7 +66,7 @@ class GenericWorker(QtGui.QWidget):
 		try:
 			IceStorm.TopicManagerPrx.checkedCast(self.mprx["topicManager"])
 		except KeyError:
-			print "please set Storm Endpoints "
+			print ("please set Storm Endpoints")
 		except:
-			print "STORM not running"
+			print ("STORM not running")
 
