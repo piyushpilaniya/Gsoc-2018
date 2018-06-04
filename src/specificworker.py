@@ -57,10 +57,11 @@ class SpecificWorker(GenericWorker):
 		self.Period = 2000
 		self.timer.start(self.Period)
 
-	def setParams(self, params):
 		env = Environment('indoors-1/indoor-1')
 		env.set_camera_location([5, -5, 6])
 		env.set_camera_rotation([1.0470, 0, 0.7854])
+
+	def setParams(self, params):
 		#try:
 		#	par = params["InnerModelPath"]
 		#	innermodel_path=par.value
@@ -321,8 +322,3 @@ class SpecificWorker(GenericWorker):
 		# YOUR CODE HERE
 		#
 		pass
-
-
-
-
-

@@ -62,7 +62,10 @@ import signal
 signal.signal(signal.SIGINT, signal.SIG_DFL)
 
 from PySide import QtCore, QtGui
-
+import os
+cwd = os.getcwd()
+print (cwd)
+sys.path.append(cwd+"/src/")
 from specificworker import *
 
 ROBOCOMP = ''
@@ -116,11 +119,8 @@ class CommonBehaviorI(RoboCompCommonBehavior.CommonBehavior):
 if __name__ == '__main__':
 	app = QtGui.QApplication(sys.argv)
 	params = copy.deepcopy(sys.argv)
-	if len(params) > 1:
-		if not params[1].startswith('--Ice.Config='):
-			params[1] = '--Ice.Config=' + params[1]
-	elif len(params) == 1:
-		params.append('--Ice.Config=config')
+	params.append('--Ice.Config=config')
+	print (params)
 	ic = Ice.initialize(params)
 	status = 0
 	mprx = {}
@@ -129,25 +129,19 @@ if __name__ == '__main__':
 	if status == 0:
 		worker = SpecificWorker(mprx)
 
-
 		adapter = ic.createObjectAdapter('DifferentialRobot')
 		adapter.add(DifferentialRobotI(worker), ic.stringToIdentity('differentialrobot'))
 		adapter.activate()
-
 
 		adapter = ic.createObjectAdapter('Laser')
 		adapter.add(LaserI(worker), ic.stringToIdentity('laser'))
 		adapter.activate()
 
-
 		adapter = ic.createObjectAdapter('JointMotor')
 		adapter.add(JointMotorI(worker), ic.stringToIdentity('jointmotor'))
 		adapter.activate()
 
-
-#		adapter.add(CommonBehaviorI(<LOWER>I, ic), ic.stringToIdentity('commonbehavior'))
-
-		app.exec_()
+#		app.exec_()
 
 	if ic:
 		try:

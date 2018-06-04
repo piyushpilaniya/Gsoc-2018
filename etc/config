@@ -1,7 +1,7 @@
 # Endpoints for implemented interfaces
-DifferentialRobot.Endpoints=tcp -p 0
-Laser.Endpoints=tcp -p 0
-JointMotor.Endpoints=tcp -p 0
+DifferentialRobot.Endpoints=tcp -p 10004
+Laser.Endpoints=tcp -p 10003
+JointMotor.Endpoints=tcp -p 10067
 
 
 
@@ -11,4 +11,3 @@ Ice.Trace.Network=0
 Ice.Trace.Protocol=0
 Ice.ACM.Client=10
 Ice.ACM.Server=10
-
