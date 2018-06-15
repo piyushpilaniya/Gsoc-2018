@@ -4,6 +4,7 @@
 from morse.builder import *
 from omni.builder.robots import Holonomicrobot, Target
 from omni.builder.actuators import Holonomicrobotactuator
+from morse.helpers import *
 
 robot = Holonomicrobot()
 robot.add_default_interface('socket')
