@@ -24,6 +24,12 @@ camera2.frequency(15)
 robot.append(camera2)
 camera.add_stream('socket')
 
+
+sick = Sick()
+sick.translate(z=2)
+robot.append(sick)
+sick.add_interface('socket')
+
 #target = Target()
 #target.translate(x=-2)
 
