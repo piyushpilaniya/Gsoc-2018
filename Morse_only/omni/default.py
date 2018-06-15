@@ -13,8 +13,19 @@ robot.append(pose)
 
 robot.add_default_interface('socket')
 
-target = Target()
-target.translate(x=-2)
+camera=VideoCamera()
+camera.translate(z=0.5)
+robot.append(camera)
+
+camera2= DepthCamera()
+camera2.translate(z = 1)
+camera2.properties(cam_width = 640, cam_height = 480)
+camera2.frequency(15)
+robot.append(camera2)
+camera.add_stream('socket')
+
+#target = Target()
+#target.translate(x=-2)
 
 env = Environment('sandbox', fastmode = False)
 env.set_camera_location([-18.0, -6.7, 10.8])
