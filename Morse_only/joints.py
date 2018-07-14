@@ -1,5 +1,5 @@
 import logging
-logger = logging.getLogger("morse." + __name__)
+logger =logging.getLogger("morse." + __name__)
 
 from morse.core import blenderapi
 
